@@ -1,8 +1,7 @@
 extern crate rand;
 
 use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
+use std::{cmp::Ordering, io};
 
 fn main() {
     println!("Guess the number");
