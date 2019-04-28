@@ -1,7 +1,8 @@
 extern crate rand;
-
 use rand::Rng;
 use std::{cmp::Ordering, io};
+mod guess;
+use guess::Guess;
 
 fn main() {
     println!("Guess the number");
@@ -17,10 +18,13 @@ fn main() {
             .read_line(&mut guess)
             .expect("failed to read line");
 
-        let guess: u32 = match guess.trim().parse() {
+        let guess: i32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
+
+        let guess: Guess = Guess::new(guess);
+        let guess = guess.value();
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
