@@ -18,12 +18,12 @@ fn main() {
             .read_line(&mut guess)
             .expect("failed to read line");
 
-        let guess: i32 = match guess.trim().parse() {
+        let guess = match guess.trim().parse::<i32>() {
             Ok(num) => num,
             Err(_) => continue,
         };
 
-        let guess: Guess = Guess::new(guess);
+        let guess = Guess::new(guess);
         let guess = guess.value();
 
         match guess.cmp(&secret_number) {
